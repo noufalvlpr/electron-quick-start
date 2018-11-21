@@ -56,11 +56,11 @@ app.on('activate', function () {
 
 // when the update has been downloaded and is ready to be installed, notify the BrowserWindow
 autoUpdater.on('update-downloaded', (info) => {
-  win.webContents.send('updateReady')
+  mainWindow.webContents.send('updateReady')
 });
 
 autoUpdater.on('error', (error) => {
-  alert('error')
+  mainWindow.webContents.send('auerror')
 });
 
 // when receiving a quitAndInstall signal, quit and install the new version ;)

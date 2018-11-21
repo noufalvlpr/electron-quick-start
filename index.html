@@ -25,6 +25,11 @@
           var container = document.getElementById('ready')
           container.innerHTML = "new version ready!"
       })
+      ipcRenderer.on('auerror', function(event, text) {
+          // changes the text of the button
+          var container = document.getElementById('ready')
+          container.innerHTML = text + 'error'
+      })
     </script>
   </body>
 </html>
