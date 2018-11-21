@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "build": "build",
-    "ship": "build always"
+    "ship": "build -p always"
   },
   "repository": "https://github.com/noufalvlpr/electron-quick-start",
   "keywords": [
