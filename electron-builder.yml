@@ -1,0 +1,4 @@
+appId: myapp32
+publish:
+    provider: github
+    token: 30db1ebc7a5cd8cce7ef781b71d107ad6bf04e6f

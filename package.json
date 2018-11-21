@@ -4,9 +4,11 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "build",
+    "ship": "build -p always"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/noufalvlpr/electron-quick-start",
   "keywords": [
     "Electron",
     "quick",
@@ -17,6 +19,10 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^3.0.4"
+    "electron": "^3.0.4",
+    "electron-builder": "^20.36.2"
+  },
+  "dependencies": {
+    "electron-updater": "^4.0.4"
   }
 }
