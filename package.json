@@ -8,6 +8,26 @@
     "build": "build",
     "ship": "build -p always"
   },
+  "build": {
+    "appId": "com.electron.app",
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "https://gitlab.com"
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "verifyUpdateCodeSignature": false
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
+    }
+  },
   "repository": "https://github.com/noufalvlpr/electron-quick-start",
   "keywords": [
     "Electron",

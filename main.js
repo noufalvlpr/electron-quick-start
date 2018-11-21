@@ -51,19 +51,43 @@ app.on('activate', function () {
   }
 })
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+autoUpdater.requestHeaders = { "PRIVATE-TOKEN": "Personal access Token" };
+autoUpdater.autoDownload = true;
 
-// when the update has been downloaded and is ready to be installed, notify the BrowserWindow
-autoUpdater.on('update-downloaded', (info) => {
-  mainWindow.webContents.send('updateReady')
+autoUpdater.setFeedURL({
+    provider: "generic",
+    url: "https://gitlab.com/noufalvalapra/electron-quick-start/-/jobs/artifacts/master/raw/dist?job=build"
 });
 
-autoUpdater.on('error', (error) => {
-  mainWindow.webContents.send('auerror')
+autoUpdater.on('checking-for-update', function () {
+    sendStatusToWindow('Checking for update...');
 });
 
-// when receiving a quitAndInstall signal, quit and install the new version ;)
-ipcMain.on("quitAndInstall", (event, arg) => {
-  autoUpdater.quitAndInstall()
-})
+autoUpdater.on('update-available', function (info) {
+    sendStatusToWindow('Update available.');
+});
+
+autoUpdater.on('update-not-available', function (info) {
+    sendStatusToWindow('Update not available.');
+});
+
+autoUpdater.on('error', function (err) {
+    sendStatusToWindow('Error in auto-updater.');
+});
+
+autoUpdater.on('download-progress', function (progressObj) {
+    let log_message = "Download speed: " + progressObj.bytesPerSecond;
+    log_message = log_message + ' - Downloaded ' + parseInt(progressObj.percent) + '%';
+    log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
+    sendStatusToWindow(log_message);
+});
+
+autoUpdater.on('update-downloaded', function (info) {
+    sendStatusToWindow('Update downloaded; will install in 1 seconds');
+});
+
+autoUpdater.on('update-downloaded', function (info) {
+    setTimeout(function () {
+        autoUpdater.quitAndInstall();
+    }, 1000);
+});
