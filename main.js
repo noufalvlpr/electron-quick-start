@@ -59,6 +59,10 @@ autoUpdater.on('update-downloaded', (info) => {
   win.webContents.send('updateReady')
 });
 
+autoUpdater.on('error', (error) => {
+  alert('error')
+});
+
 // when receiving a quitAndInstall signal, quit and install the new version ;)
 ipcMain.on("quitAndInstall", (event, arg) => {
   autoUpdater.quitAndInstall()
