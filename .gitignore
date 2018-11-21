@@ -1,4 +1,3 @@
 node_modules
 dist
 electron-builder.yml
-dev-app-update.yml
