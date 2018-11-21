@@ -1,32 +1,12 @@
 {
   "name": "electron-quick-start",
-  "version": "1.2.0",
+  "version": "1.1.0",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "build": "build",
     "ship": "build -p always"
-  },
-  "build": {
-    "appId": "com.electron.app",
-    "publish": [
-      {
-        "provider": "generic",
-        "url": "https://gitlab.com"
-      }
-    ],
-    "win": {
-      "target": [
-        "nsis"
-      ],
-      "verifyUpdateCodeSignature": false
-    },
-    "linux": {
-      "target": [
-        "AppImage"
-      ]
-    }
   },
   "repository": "https://github.com/noufalvlpr/electron-quick-start",
   "keywords": [
