@@ -1,7 +1,6 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const {autoUpdater} = require("electron-updater")
-var log = require('electron-log')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -54,34 +53,26 @@ app.on('activate', function () {
   }
 })
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+// when the update has been downloaded and is ready to be installed, notify the BrowserWindow
+autoUpdater.on('update-downloaded', (info) => {
+  mainWindow.webContents.send('updateReady')
+});
 
-function sendStatusToWindow(text) {
-  log.info(text);
-  mainWindow.webContents.send('message', text);
-}
-
-// // when the update has been downloaded and is ready to be installed, notify the BrowserWindow
-// autoUpdater.on('update-downloaded', (info) => {
-//   mainWindow.webContents.send('updateReady')
-// });
-
-// autoUpdater.on('checking-for-update', () => {
-//   mainWindow.webContents.send('updateInfo', 'Checking for updates..')
-// })
-// autoUpdater.on('update-available', (ev, info) => {
-//   mainWindow.webContents.send('updateInfo', 'Update available')
-// })
-// autoUpdater.on('update-not-available', (ev, info) => {
-//   mainWindow.webContents.send('updateInfo', 'Update not available')
-// })
-// autoUpdater.on('error', (ev, err) => {
-//   mainWindow.webContents.send('updateInfo', err)
-// })
-// autoUpdater.on('download-progress', (ev, progressObj) => {
-//   mainWindow.webContents.send('updateInfo', 'Downloading update')
-// })
+autoUpdater.on('checking-for-update', () => {
+  mainWindow.webContents.send('updateInfo', 'Checking for updates..')
+})
+autoUpdater.on('update-available', (ev, info) => {
+  mainWindow.webContents.send('updateInfo', 'Update available')
+})
+autoUpdater.on('update-not-available', (ev, info) => {
+  mainWindow.webContents.send('updateInfo', 'Update not available')
+})
+autoUpdater.on('error', (ev, err) => {
+  mainWindow.webContents.send('updateInfo', err)
+})
+autoUpdater.on('download-progress', (ev, progressObj) => {
+  mainWindow.webContents.send('updateInfo', 'Downloading update')
+})
 
 // // when receiving a quitAndInstall signal, quit and install the new version ;)
 // ipcMain.on("quitAndInstall", (event, arg) => {
