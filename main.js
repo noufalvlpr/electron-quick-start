@@ -30,7 +30,10 @@ function createWindow () {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', function () {
-  createWindow()
+  // createWindow()
+  mainWindow = new BrowserWindow({width: 800, height: 600})
+  autoUpdater.logger = require("electron-log")
+  autoUpdater.logger.transports.file.level = "info"
   autoUpdater.checkForUpdates()
 })
 
@@ -81,7 +84,7 @@ autoUpdater.on('download-progress', (ev, progressObj) => {
   sendStatusToWindow('Download progress...');
 })
 
-// when receiving a quitAndInstall signal, quit and install the new version ;)
-ipcMain.on("quitAndInstall", (event, arg) => {
-    autoUpdater.quitAndInstall();
-})
+// // when receiving a quitAndInstall signal, quit and install the new version ;)
+// ipcMain.on("quitAndInstall", (event, arg) => {
+//     autoUpdater.quitAndInstall();
+// })
