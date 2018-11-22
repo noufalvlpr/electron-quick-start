@@ -26,11 +26,12 @@ On Windows, run in powershell:
 Make sure to restart IDE/Terminal to inherit latest env variable.
 
 create electron-builder.yml and add this file to .gitignore
+```
     appId: myapp32
     publish:
         provider: github
         token: <githubtoken>
-
+```
 
 ## Resources for Learning Electron
 
