@@ -74,7 +74,7 @@ autoUpdater.on('download-progress', (ev, progressObj) => {
   mainWindow.webContents.send('updateInfo', 'Downloading update')
 })
 
-// // when receiving a quitAndInstall signal, quit and install the new version ;)
-// ipcMain.on("quitAndInstall", (event, arg) => {
-//     autoUpdater.quitAndInstall();
-// })
+// when receiving a quitAndInstall signal, quit and install the new version ;)
+ipcMain.on("quitAndInstall", (event, arg) => {
+    autoUpdater.quitAndInstall();
+})
