@@ -1,5 +1,8 @@
 # electron-quick-start
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2d5835025cd313f33cb6aec7af1bfacedad3e251
 Electron app with electron-builder auto updating.
 
 ## To Use
@@ -8,7 +11,7 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 
 ```bash
 # Clone this repository
-git clone https://github.com/electron/electron-quick-start
+git clone https://github.com/noufalvlpr/electron-quick-start
 # Go into the repository
 cd electron-quick-start
 # Install dependencies
