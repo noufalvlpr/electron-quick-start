@@ -9,7 +9,7 @@
     "ship": "build -p always"
   },
   "build": {
-    "appId": "yourappid",
+    "appId": "myapp32",
     "linux": {
       "target": [
         "AppImage"
