@@ -9,7 +9,7 @@
     <h2>updated</h2>
     Version: <span id="version">v0.1.9</span>
     <!-- the button onClick sends a quitAndInstall message to the electron main process -->
-    <button id="ready" onClick="ipcRenderer.send('quitAndInstall')">no updates ready</button>
+    <button id="ready" onClick="ipcRenderer.send('quitAndInstall')">Checking for updates</button>
     <!-- All of the Node.js APIs are available in this renderer process. -->
     We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
@@ -25,10 +25,10 @@
           var container = document.getElementById('ready')
           container.innerHTML = "new version ready!"
       })
-      ipcRenderer.on('auerror', function(event, text) {
+      ipcRenderer.on('updateInfo', function(event, text) {
           // changes the text of the button
           var container = document.getElementById('ready')
-          container.innerHTML = text + 'error'
+          container.innerHTML = text
       })
     </script>
   </body>
