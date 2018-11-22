@@ -1,8 +1,4 @@
 # electron-quick-start
-<<<<<<< HEAD
-
-=======
->>>>>>> 2d5835025cd313f33cb6aec7af1bfacedad3e251
 Electron app with electron-builder auto updating.
 
 ## To Use
